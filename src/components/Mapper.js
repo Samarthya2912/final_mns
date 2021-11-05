@@ -73,8 +73,8 @@ const Mapper = () => {
                     <canvas height="400" width="600" ref={canvasRef} id="canvas" ></canvas>
                     <Webcam ref={webcamRef} id="webcam" />
                 </div>
-                <button onClick={() => { clearInterval(IntervalRef.current) }}>Stop Animation</button>
             </div>
+            <button onClick={() => { clearInterval(IntervalRef.current) }}>Stop</button>
         </>
     )
 }

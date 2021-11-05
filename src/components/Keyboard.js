@@ -176,9 +176,8 @@ function App() {
         <div>
           <textarea className="pad" placeholder="Your text goes here..." ref={padRef} value={""} />
         </div>
-        <button onClick={() => { clearInterval(IntervalRef.current); clearInterval(keyBoardintervalRef.current) }}>Stop Animation</button>
-
       </div>
+      <button onClick={() => { clearInterval(IntervalRef.current); clearInterval(keyBoardintervalRef.current) }}>Stop</button>
     </>
   );
 }
