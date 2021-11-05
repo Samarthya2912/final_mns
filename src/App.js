@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'react';
 import { drawMesh } from './functions/canvas_functions.js';
 import Mapper from './components/Mapper.js'
 import Keyboard from './components/Keyboard.js'
+import Home from './components/Home';
 import {
   BrowserRouter as Router,
   Link,
@@ -72,7 +73,7 @@ function App() {
           <Link to="/keyboard">Keyboard</Link>
         </nav>
         <Routes>
-          <Route path="/" element={<h1>Welcome!</h1>} />
+          <Route path="/" element={<Home />} />
           <Route path="/mapper" element={<Mapper />} />
           <Route path="/keyboard" element={<Keyboard />} />
         </Routes>
