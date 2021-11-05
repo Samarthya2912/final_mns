@@ -1,14 +1,66 @@
 .App {
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(238, 210, 222, 0.05);
+  overflow-x: hidden;
 }
 
 nav {
-    background-color: blueviolet;
-    padding: 15px;
+  background-color: blueviolet;
+  padding: 15px;
+  width: 100vw;
 }
 
 nav * {
-    margin: 0 40px;
-    text-decoration: none;
-    color: white;
+  margin: 0 40px;
+  text-decoration: none;
+  color: white;
+}
+
+#webcam,
+video {
+  height: 400px;
+  width: 600px;
+}
+
+canvas {
+  max-width: 600px;
+  height: 400px;
+}
+
+.letters {
+  display: flex;
+}
+
+#canvas {
+  border: solid black 1px;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.keyboard-row {
+  display: flex;
+  margin: 0;
+  /* border: solid red 1px; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.keyboard-row * {
+  margin: 0 20px;
+}
+
+.pad {
+  border: solid black 1px;
+  height: 2vw;
 }

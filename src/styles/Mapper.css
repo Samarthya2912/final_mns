@@ -1,6 +1,10 @@
 .mapper-container {
   font-family: "Urbanist", sans-serif;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }
 
 #webcam,
@@ -12,6 +16,7 @@ video {
 canvas {
   max-width: 600px;
   height: 400px;
+  background-color: white;
 }
 
 .letters {

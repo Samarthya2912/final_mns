@@ -12,6 +12,7 @@ const Mapper = () => {
     const webcamRef = useRef();
     const canvasRef = useRef();
     const videoRef = useRef();
+    const IntervalRef = useRef();
 
     function runFaceLandmarksDetector() {
         async function call() {
@@ -19,7 +20,7 @@ const Mapper = () => {
                 faceLandmarksDetector.SupportedPackages.mediapipeFacemesh
             )
 
-            setInterval(() => {
+            IntervalRef.current = setInterval(() => {
                 detectFace(model);
             }, 10);
         }
@@ -56,15 +57,25 @@ const Mapper = () => {
 
     }
 
-    useEffect(runFaceLandmarksDetector, []);
+    useEffect(() => {
+        runFaceLandmarksDetector();
+
+        return () => {
+            clearInterval(IntervalRef.current)
+        }
+    }, []);
 
     return (
-        <div className="mapper-container">
-            <div style={{ display: 'flex', alignContent: 'center' }}>
-                <canvas height="400" width="600" ref={canvasRef} id="canvas" ></canvas>
-                <Webcam ref={webcamRef} id="webcam" />
+        <>
+            <h1>Landmark Mapper</h1>
+            <div className="mapper-container">
+                <div style={{ display: 'flex', alignContent: 'center' }}>
+                    <canvas height="400" width="600" ref={canvasRef} id="canvas" ></canvas>
+                    <Webcam ref={webcamRef} id="webcam" />
+                </div>
+                <button onClick={() => { clearInterval(IntervalRef.current) }}>Stop Animation</button>
             </div>
-        </div>
+        </>
     )
 }
 
