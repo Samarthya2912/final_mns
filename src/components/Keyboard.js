@@ -13,6 +13,7 @@ const characters = [
   ['v', 'w','x', 'y', 'z'],
   ['1', '2', '3', '4', '5'],
   ['6', '7', '8', '9', '0'],
+  ['Spacebar']
 ]
 
 function App() {
@@ -63,7 +64,8 @@ function App() {
 
         if (face[0].scaledMesh[374][1] - face[0].scaledMesh[386][1] < 4) {
           if (typing && columnTraversing) {
-            padRef.current.value += characters[rowIndex][columnIndex];
+            if(characters[rowIndex][columnIndex] === 'Spacebar') padRef.current.value += ' ';
+            else padRef.current.value += characters[rowIndex][columnIndex];
             //  (text + characters[rowIndex][columnIndex]);
             typing = false;
             typed = true;
@@ -76,7 +78,7 @@ function App() {
 
             setTimeout(() => {
               typing = true;
-            }, 1000);
+            }, 500);
           }
 
           if (rowTraversing && typing) {
@@ -103,25 +105,25 @@ function App() {
     const rows = document.querySelectorAll(".keyboard-row");
     console.log(rows);
     rows.forEach(row => {
-      document.getElementById(row.id).style.color = "black";
+      document.getElementById(row.id).classList.remove("blue");
     })
 
-    document.getElementById(rows[rowIndex].id).style.color = "blue"
+    document.getElementById(rows[rowIndex].id).classList.add("blue");
   }
 
   const setColumnUI = () => {
     const chars = document.querySelectorAll(`#row_${rowIndex} .char`);
 
     chars.forEach(char => {
-      document.getElementById(char.id).style.color = "black"
+      document.getElementById(char.id).classList.remove("red");
     })
 
-    document.getElementById(chars[columnIndex].id).style.color = "red";
+    document.getElementById(chars[columnIndex].id).classList.add("red");
   }
 
   const clearUI = () => {
     document.querySelectorAll(".char").forEach(char => {
-      char.style = "";
+      char.classList.remove("red");
     });
   }
 

@@ -68,10 +68,12 @@ function App() {
       <div className="App">
         <nav>
           <Link to="/">Home</Link>
+          <Link to="/mapper">Landmark mapper</Link>
           <Link to="/keyboard">Keyboard</Link>
         </nav>
         <Routes>
-          <Route path="/" element={<Mapper />} />
+          <Route path="/" element={<h1>Welcome!</h1>} />
+          <Route path="/mapper" element={<Mapper />} />
           <Route path="/keyboard" element={<Keyboard />} />
         </Routes>
       </div>

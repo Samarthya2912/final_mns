@@ -85,7 +85,7 @@ canvas {
   border: solid gray 1px;
   padding: 10px;
   width: 3vw;
-  height: 3vw;
+  height: 2.75vw;
   margin: 5px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.05);
@@ -123,3 +123,15 @@ button:active {
   background-color: rgb(245, 94, 94);
 }
 
+#Spacebar {
+  width: 33vw;
+  align-self: center;
+}
+
+.red {
+  background-color: aqua;
+}
+
+.blue {
+  background-color: pink;
+}
