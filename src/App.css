@@ -64,3 +64,11 @@ canvas {
   border: solid black 1px;
   height: 2vw;
 }
+
+.keyboard-container video {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -350px;
+  z-index: -1;
+}

@@ -50,13 +50,7 @@ function App() {
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
-      const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
-
-      // Set video width
-      webcamRef.current.video.width = videoWidth;
-      webcamRef.current.video.height = videoHeight;
-
+      
       // const video = webcamRef.current.video;
       const face = await model.estimateFaces({
         input: video
