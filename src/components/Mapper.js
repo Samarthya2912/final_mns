@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from 'react'
 import ReactWebcam from 'react-webcam'
-import '../styles/Mapper.css'
+// import '../styles/Mapper.css'
 import * as tf from '@tensorflow/tfjs'
 import * as faceLandmarksDetector from '@tensorflow-models/face-landmarks-detection'
 import Webcam from 'react-webcam'

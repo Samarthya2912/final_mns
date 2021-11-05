@@ -1,16 +1,16 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as tf from '@tensorflow/tfjs';
 import * as faceLandmarksDetector from '@tensorflow-models/face-landmarks-detection';
 import Webcam from 'react-webcam';
-import { useEffect, useRef } from 'react';
-import '../styles/Keyboard.css'
+import { useEffect, useRef, useState } from 'react';
+// import '../styles/Keyboard.css'
 
 const characters = [
-  ['a', 'b', 'c', 'd'],
-  ['e', 'f', 'g', 'h'],
-  ['i', 'j', 'k', 'l'],
-  ['m', 'n', 'o', 'p'],
-  ['q', 'r', 's', 't', 'u'],
-  ['v', 'w', 'x', 'y', 'z'],
+  ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
+  ['h', 'i', 'j', 'k', 'l','m','n'],
+  ['o', 'p', 'q', 'r','s','t','u'],
+  ['v', 'w','x', 'y', 'z'],
   ['1', '2', '3', '4', '5'],
   ['6', '7', '8', '9', '0'],
 ]
@@ -19,6 +19,7 @@ function App() {
   const webcamRef = useRef();
   const IntervalRef = useRef();
   const keyBoardintervalRef = useRef();
+  const padRef = useRef();
 
   let rowIndex = -1;
   let columnIndex = -1;
@@ -50,7 +51,7 @@ function App() {
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
-      
+
       // const video = webcamRef.current.video;
       const face = await model.estimateFaces({
         input: video
@@ -61,10 +62,9 @@ function App() {
       if (face.length) {
 
         if (face[0].scaledMesh[374][1] - face[0].scaledMesh[386][1] < 4) {
-          document.querySelector('#eyestatus').innerHTML = "eye is close";
-
           if (typing && columnTraversing) {
-            document.querySelector('.pad').innerHTML += characters[rowIndex][columnIndex];
+            padRef.current.value += characters[rowIndex][columnIndex];
+            //  (text + characters[rowIndex][columnIndex]);
             typing = false;
             typed = true;
 
@@ -90,9 +90,7 @@ function App() {
             }, 1000);
           }
 
-        } else {
-          document.querySelector('#eyestatus').innerHTML = "eye is open";
-        }
+        } 
       }
 
     } else {
@@ -152,35 +150,36 @@ function App() {
   }, [])
 
   return (
-    <div className="keyboard-container">
-      <div style={{ display: 'flex', alignContent: 'center' }}>
-        <Webcam ref={webcamRef} id="webcam" />
-      </div>
-      <h1 id="eyestatus">Eyestatus</h1>
+    <>
+      <h1>Visual Keyboard</h1>
+      <div className="keyboard-container">
+        <div style={{ display: 'flex', alignContent: 'center' }}>
+          <Webcam ref={webcamRef} id="webcam" />
+        </div>
 
-      <div className="keyboard">
-        {
-          characters.map((row, index) => {
-            return (
-              <div className="keyboard-row" id={`row_${index}`} key={index}>
-                {
-                  row.map((char, index__) => {
-                    return <h2 className="char" id={char} key={char}>{char}</h2>
-                  })
-                }
-              </div>
-            )
-          })
-        }
-      </div>
+        <div className="keyboard">
+          {
+            characters.map((row, index) => {
+              return (
+                <div className="keyboard-row" id={`row_${index}`} key={index}>
+                  {
+                    row.map((char, index__) => {
+                      return <h2 className="char" id={char} key={char}>{char}</h2>
+                    })
+                  }
+                </div>
+              )
+            })
+          }
+        </div>
 
-      <div>
-        <p className="pad"></p>
-        <h1>Writing Pad</h1>
-      </div>
-      <button onClick={() => { clearInterval(IntervalRef.current); clearInterval(keyBoardintervalRef.current) }}>Stop Animation</button>
+        <div>
+          <textarea className="pad" placeholder="Your text goes here..." ref={padRef} value={""} />
+        </div>
+        <button onClick={() => { clearInterval(IntervalRef.current); clearInterval(keyBoardintervalRef.current) }}>Stop Animation</button>
 
-    </div>
+      </div>
+    </>
   );
 }
 

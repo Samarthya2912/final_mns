@@ -4,7 +4,8 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(238, 210, 222, 0.05);
-  overflow-x: hidden;
+  overflow: hidden;
+  max-height: 100vw;
 }
 
 nav {
@@ -38,6 +39,12 @@ canvas {
   border: solid black 1px;
 }
 
+.keyboard-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .keyboard {
   display: flex;
   flex-direction: column;
@@ -51,9 +58,8 @@ canvas {
 .keyboard-row {
   display: flex;
   margin: 0;
-  /* border: solid red 1px; */
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .keyboard-row * {
@@ -71,4 +77,26 @@ canvas {
   position: absolute;
   top: -350px;
   z-index: -1;
+}
+
+.char {
+  border: solid gray 1px;
+  padding: 10px;
+  width: 3vw;
+  height: 3vw;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.01);
+}
+
+.pad {
+  margin: 20px;
+  min-height: 20vw;
+  min-width: 20vw;
+  max-width: 20vw;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: large;
 }
