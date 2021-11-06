@@ -153,7 +153,7 @@ function App() {
 
   return (
     <>
-      <h1>Visual Keyboard</h1>
+      <h1>`Blink-to-type` Keyboard</h1>
       <div className="keyboard-container">
         <div style={{ display: 'flex', alignContent: 'center' }}>
           <Webcam ref={webcamRef} id="webcam" />
