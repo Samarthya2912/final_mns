@@ -22,6 +22,10 @@ const Home = () => {
                 <h1 style={{ fontSize: '10em' }}>+</h1>
                 <TensorflowIcon />
             </div>
+                <h2>Please Press <button style={{
+                    color: 'white',
+
+                }}>Stop</button> before switching tabs.</h2>
         </div>
     )
 }
